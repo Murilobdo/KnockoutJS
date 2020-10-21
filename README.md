@@ -1,4 +1,4 @@
-# TaskList-KnockoutJS
+#KnockoutJS
 Esse repositorio tem como foco o estudo da Lib do Knockout JS para aprender o seu funcionamento, esse projeto tem 2 aplicações:
 <ul>
   <li>Task List: Nada mais nada menos que um criado de tarefas bem simples onde é possivel adicionar e excluir, os dados não sao perdidos pois ele tem um arquivo JSON como banco de dados.</li>
