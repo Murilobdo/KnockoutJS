@@ -11,13 +11,13 @@ using Knockout_Init.Repository.Interfaces;
 
 namespace Knockout_Init.Controllers
 {
-    public class HomeController : Controller
+    public class TaskListController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<TaskListController> _logger;
 
         ITasksRepository FRepo;
 
-        public HomeController(ILogger<HomeController> logger, ITasksRepository ARepo)
+        public TaskListController(ILogger<TaskListController> logger, ITasksRepository ARepo)
         {
             _logger = logger;
             FRepo = ARepo;
