@@ -1,7 +1,9 @@
 # TaskList-KnockoutJS
-
-Uma aplicação simples de uma lista de tarefas para aprender as funcionalidades de CRUD do Knockout JS, a aplicação é PWA podendo ser adicionado na area de  trabalho ou no seu dispositivo móvel.
-
+Esse repositorio tem como foco o estudo da Lib do Knockout JS para aprender o seu funcionamento, esse projeto tem 2 aplicações:
+<ul>
+  <li>Task List: Nada mais nada menos que um criado de tarefas bem simples onde é possivel adicionar e excluir, os dados não sao perdidos pois ele tem um arquivo JSON como banco de dados.</li>
+  <li>Converter: Um conversor de RGB para Hexadecimal, onde é possivel você entrar com os valores RGB ou usar os 3 inputs deslizantes para gerar o RGB</li>
+</ul>
 
 ## Ferramentas Utilizadas
 <ul>
