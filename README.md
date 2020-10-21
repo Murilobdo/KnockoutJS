@@ -2,7 +2,7 @@
 
 Esse repositorio tem como foco o estudo da Lib do Knockout JS para aprender o seu funcionamento, esse projeto tem 2 aplicações:
 <ul>
-  <li>Task List: Nada mais nada menos que um criado de tarefas bem simples onde é possivel adicionar e excluir, os dados não sao perdidos pois ele tem um arquivo JSON como banco de dados.</li>
+  <li>Task List: Nada mais nada menos que um criador de tarefas bem simples onde é possivel adicionar e excluir, os dados não sao perdidos pois ele tem um arquivo JSON como banco de dados.</li>
   <li>Converter: Um conversor de RGB para Hexadecimal, onde é possivel você entrar com os valores RGB ou usar os 3 inputs deslizantes para gerar o RGB</li>
 </ul>
 
