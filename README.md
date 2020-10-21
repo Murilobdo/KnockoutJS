@@ -1,4 +1,4 @@
-#KnockoutJS
+## KnockoutJS
 
 Esse repositorio tem como foco o estudo da Lib do Knockout JS para aprender o seu funcionamento, esse projeto tem 2 aplicações:
 <ul>
