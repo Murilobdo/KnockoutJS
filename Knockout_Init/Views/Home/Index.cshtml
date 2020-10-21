@@ -1,0 +1,77 @@
+﻿@model List<TaskViewModel>
+@using Newtonsoft.Json;
+@{
+        ViewData["Title"] = "Home Page";
+    <script src="~/js/Views/TaskView.js"></script>
+}
+<style>
+    .tasks-container {
+        border-top: 1px solid #ccc;
+        padding: 10px 0px
+    }
+
+    #container {
+        min-height: 30vh;
+        max-height: 80vh;
+        width: 70%;
+        background: #f1f1f1;
+        border-radius: 10px;
+        box-shadow: 2px 4px 4px #ccc;
+    }
+
+    .button {
+        height: 20px;
+        color: white;
+        background: red;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 0px;
+        justify-content: center;
+        outline: none;
+    }
+
+    button:active, button:focus {
+        outline: none;
+        border: 0px;
+        box-shadow: none;
+    }
+
+    #taskName {
+        width: 86%;
+        margin-right: 10px;
+    }
+
+    @@media screen and (max-width:576px) {
+        #container {
+            width: 100%;
+        }
+
+        #taskName {
+            width: 70%
+        }
+    }
+</style>
+<div id="container" class="container-fluid">
+    <div class="form-row mt-3 pt-3">
+        <input type="text" id="taskName" name="taskName" value="" placeholder="Titulo da tarefa..." class="form-control" />
+        <button class="btn btn-primary" onclick="LTask.Add()">Adicionar</button>    
+    </div>
+
+    <h3 class="text-muted my-3">Tarefas</h3>
+    <div class="row m-0 tasks-container">
+        <ul data-bind="foreach: LTask.Data" style="width:90%">
+            <li class="row">
+                <button style="height:20px; margin-right:10px;" class="button" data-bind="click: LTask.Delete">X</button>
+                <span data-bind="text: desTask"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(() => { ko.applyBindings(LTask) }, 1000);
+    });
+</script>
