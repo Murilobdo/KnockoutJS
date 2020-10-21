@@ -12,3 +12,6 @@ Uma aplicação simples de uma lista de tarefas para aprender as funcionalidades
   <li>TypeScript v4.0.3</li>
   <li>jQuery JavaScript Library v3.5.1</li>
 </ul>
+
+## Gif demonstrativo
+<img src="https://github.com/Murilobdo/TaskList-KnockoutJS/blob/main/Knockout_Init/wwwroot/videos/video.gif.gif" />
