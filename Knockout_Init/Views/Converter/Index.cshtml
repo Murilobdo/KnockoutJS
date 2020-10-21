@@ -1,0 +1,139 @@
+﻿
+
+<script src="~/js/Views/Converter.js"></script>
+
+
+<style>
+    #container {
+        min-height: 30vh;
+        max-height: 80vh;
+        width: 70%;
+        background: #f1f1f1;
+        border-radius: 10px;
+        box-shadow: 2px 4px 4px #ccc;
+    }
+    input[type=range] {
+        -webkit-appearance: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 300px;
+        height: 5px;
+        background: #ddd;
+        border: none;
+        border-radius: 3px;
+    }
+    #formControlRange-red::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: red;
+        margin-top: -4px;
+    }
+    #formControlRange-green::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: green;
+        margin-top: -4px;
+    }
+    #formControlRange-blue::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: blue;
+        margin-top: -4px;
+    }
+    input[type=range]:focus {
+        outline: none;
+    }
+
+    input[type=range]:focus::-webkit-slider-runnable-track {
+        background: #ccc;
+    }
+    input[id^=formControlRange]{
+        width:90%;
+    }
+    span{
+        width: 100%;
+        border:1px solid #808080;
+        border-radius:10px;
+        margin:0px 10px;
+    }
+    label {
+        width: 12%;
+        margin: 10px 0px 10px 15px;
+    }
+    input[id^=value] {
+        width: 7%;
+        height: 27px;
+        margin-top: 10px;
+    }
+    #color-box {
+        background-color: aquamarine;
+        height: 105px;
+        padding-bottom: 10px;
+    }
+</style>
+<div id="container" class="container-fluid">
+
+    <div class="row">
+        <label for="formControlRange" >Vermelho</label>
+        <input type="text" id="value-red" class="form-control" value="0" data-bind="value: LConverter.rangeInputRed" />
+    </div>
+    <div class="form-group">
+        <input type="range" max="255" min="0" class="form-control-range" id="formControlRange-red" value="0" data-bind="value: LConverter.rangeInputRed">
+    </div>
+
+    <div class="row">
+        <label for="formControlRange">Verde</label>
+        <input type="text" id="value-green" class="form-control" value="0" data-bind="value: LConverter.rangeInputGreen"/>
+    </div>
+    <div class="form-group">
+        <input type="range" max="255" min="0" class="form-control-range" id="formControlRange-green" value="0" data-bind="value: LConverter.rangeInputGreen">
+    </div>
+
+    <div class="row">
+        <label for="formControlRange">Azul</label>
+        <input type="text" id="value-blue" class="form-control" value="0" data-bind="value: LConverter.rangeInputBlue" />
+    </div>
+    <div class="form-group">
+        <input type="range" max="255" min="0" class="form-control-range" id="formControlRange-blue" value="0" data-bind="value: LConverter.rangeInputBlue">
+    </div>
+
+    <div id="container-color" class="container row">
+        <div class="col-md-6">
+            <div id="color-box" data-bind="style: {background: LConverter.colorBox}">
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-row">
+                <label>RGB: </label>
+                <input class="form-control" type="text" value="0" style="width:15%; margin-right:5px;" data-bind="value: LConverter.rangeInputRed"  />
+                <input class="form-control" type="text" value="0" style="width:15%; margin-right:5px;" data-bind="value: LConverter.rangeInputGreen" />
+                <input class="form-control" type="text" value="0" style="width:15%; margin-right:5px;" data-bind="value: LConverter.rangeInputBlue" />
+                <label data-bind="text: LConverter.rgbColor"></label>
+            </div>                                                               
+            <div class="form-row">
+                <label>HEX: </label>
+                <input class="form-control" type="text" value="000000" style="width:15%; margin-right:5px;" data-bind="value: LConverter.hexaRed"/>
+                <input class="form-control" type="text" value="000000" style="width:15%; margin-right:5px;" data-bind="value: LConverter.hexaGreen"/>
+                <input class="form-control" type="text" value="000000" style="width:15%; margin-right:5px;" data-bind="value: LConverter.hexaBlue"/>
+                <label data-bind="text: LConverter.hexaColor"></label>
+            </div>
+            <br /><br />
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(() => { ko.applyBindings(LConverter) }, 100);
+    });
+</script>

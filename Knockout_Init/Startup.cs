@@ -62,7 +62,7 @@ namespace Knockout_Init
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=TaskList}/{action=Index}/{id?}");
             });
         }
     }
