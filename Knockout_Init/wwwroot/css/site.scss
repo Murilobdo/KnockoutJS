@@ -1,0 +1,75 @@
+.menu{
+    
+    background-color: rgba(40, 101, 214, 0.575);
+    height: 100vh;
+    list-style: none;
+    padding: 30px 10px 10px 10px;
+
+    li{
+        display: flex;
+
+        a{
+            background-color: rgba(255, 255, 255, 0.664);
+            padding: 10px 0px 10px 0px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+    
+        } 
+        a:hover{
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
+}
+
+//-------------------------------------------GRID-------------------------------------------//
+#grid{
+    margin-top: 20px;
+    padding: 5px;
+    box-shadow: 0px 0px 3px #808080;
+    border-radius: 5px;
+    height: 100%;
+}
+.ko-grid{
+    width: 100%;
+    thead{
+        background-color: rgba(0, 0, 0, 0.171);
+        
+        th{
+            padding: 10px 0px 10px 5px;
+            // border: 1px solid black;
+        }
+    }
+
+    td{
+        // border: 1px solid black;
+        padding: 5px 5px;
+    }
+
+    tr:nth-child(even) { background-color: rgba(0, 0, 0, 0.068); }
+}
+
+.ko-grid-pageLinks{
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.171);
+
+    a{
+        color: white;
+        background: rgba(7, 7, 7, 0.096);
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+}
+#filters{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    box-shadow: 0px 0px 3px #808080;
+    border-radius: 5px;
+    height: 100%;
+}

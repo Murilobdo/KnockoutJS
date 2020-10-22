@@ -8,9 +8,6 @@ namespace Knockout_Init.Controllers
 {
     public class ConverterController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
     }
 }

@@ -1,0 +1,36 @@
+@{
+    Layout = "_Layout";
+    <script src="~/js/Views/Grid.js"></script>
+}
+
+
+
+<div id="filters" class="row m-0 mt-5">
+    <div class="col-md-2">
+        <label for="" class="text-muted" style="font-weight: bold;">Marca</label>
+        <select id="filter-marca" class="form-control" data-bind="options: LGrid.Marcas"></select>
+    </div>
+
+    <div class="col-md-2">
+        <label for="" class="text-muted" style="font-weight: bold;">Modelo</label>
+        <select id="filter-marca" class="form-control" data-bind="options: LGrid.Modelos"></select>
+    </div>
+
+    <div class="col-md-2">
+        <label for="" class="text-muted" style="font-weight: bold;">Ano</label>
+        <select id="filter-marca" class="form-control" data-bind="options: LGrid.Anos"></select>
+    </div>
+
+    <div class="col-md-2" style="padding-top: 30px;">
+        <button class="btn btn-primary px-4" onclick="LGrid.Filter()">Filtrar</button>
+    </div>
+</div>
+
+<div id="grid" data-bind="simpleGrid: LGrid.DataGrid"></div>
+
+<script>
+    $(document).ready(function () {
+        LGrid.Init(undefined);
+        setTimeout(() => { ko.applyBindings(LGrid) }, 100);
+    });
+</script>

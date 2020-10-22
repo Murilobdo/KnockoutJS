@@ -2,7 +2,8 @@
 @using Newtonsoft.Json;
 @{
         ViewData["Title"] = "Home Page";
-    <script src="~/js/Views/TaskView.js"></script>
+        <script src="~/js/Views/TaskView.js"></script>
+    Layout = "_Layout";
 }
 <style>
     .tasks-container {
@@ -44,6 +45,7 @@
     }
 
     @@media screen and (max-width:576px) {
+        
         #container {
             width: 100%;
         }
@@ -69,9 +71,8 @@
         </ul>
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
-        setTimeout(() => { ko.applyBindings(LTask) }, 1000);
+        setTimeout(() => { ko.applyBindings(LTask) }, 100);
     });
 </script>

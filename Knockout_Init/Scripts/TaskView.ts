@@ -9,7 +9,7 @@
 
     Add = () => {
         $.post({
-            url: site.Url("Create", "Home"),
+            url: site.Url("Create", "TaskList"),
             data: { DesTask: $("#taskName").val() }
         }).done(data => {
             //@ts-ignore
@@ -21,7 +21,7 @@
 
     LoadData = () => {
         $.post({
-            url: site.Url("Read", "Home"),
+            url: site.Url("Read", "TaskList"),
             data: {}
         }).done(data => {
             //@ts-ignore
@@ -31,7 +31,7 @@
 
     Delete = (ATask) => {
         $.post({
-            url: site.Url("Delete", "Home"),
+            url: site.Url("Delete", "TaskList"),
             data: { DesTask: ATask.desTask }
         }).done(data => {
             //@ts-ignore

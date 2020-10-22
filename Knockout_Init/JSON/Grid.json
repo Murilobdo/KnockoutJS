@@ -1,0 +1,58 @@
+[
+    {
+        "TidMarca": "Honda",
+        "TidCarro": "Civic",
+        "ValAno": 2019
+    },
+
+    
+    {
+        "TidMarca": "Fiat",
+        "TidCarro": "Argo",
+        "ValAno": 2018
+    },
+    {
+        "TidMarca": "Volkswagen",
+        "TidCarro": "Golf",
+        "ValAno": 2015
+    },
+    {
+        "TidMarca": "Honda",
+        "TidCarro": "CR-V",
+        "ValAno": 2020
+    },
+
+    {
+        "TidMarca": "Volkswagen",
+        "TidCarro": "Polo",
+        "ValAno": 2019
+    },
+
+    {
+        "TidMarca": "Toyota",
+        "TidCarro": "Prius",
+        "ValAno": 2018
+    },
+    {
+        "TidMarca": "Fiat",
+        "TidCarro": "Cronos",
+        "ValAno": 2020
+    },
+
+    {
+        "TidMarca": "Hyundai",
+        "TidCarro": "Santa Fé",
+        "ValAno": 2019
+    },
+    {
+        "TidMarca": "Toyota",
+        "TidCarro": "Corolla",
+        "ValAno": 2020
+    },
+
+    {
+        "TidMarca": "Hyundai",
+        "TidCarro": "Tucson",
+        "ValAno": 2019
+    }
+]

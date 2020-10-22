@@ -5,7 +5,7 @@ var Task = /** @class */ (function () {
         this.Init = function () { _this.LoadData(); };
         this.Add = function () {
             $.post({
-                url: site.Url("Create", "Home"),
+                url: site.Url("Create", "TaskList"),
                 data: { DesTask: $("#taskName").val() }
             }).done(function (data) {
                 //@ts-ignore
@@ -15,7 +15,7 @@ var Task = /** @class */ (function () {
         };
         this.LoadData = function () {
             $.post({
-                url: site.Url("Read", "Home"),
+                url: site.Url("Read", "TaskList"),
                 data: {}
             }).done(function (data) {
                 //@ts-ignore
@@ -24,7 +24,7 @@ var Task = /** @class */ (function () {
         };
         this.Delete = function (ATask) {
             $.post({
-                url: site.Url("Delete", "Home"),
+                url: site.Url("Delete", "TaskList"),
                 data: { DesTask: ATask.desTask }
             }).done(function (data) {
                 //@ts-ignore
