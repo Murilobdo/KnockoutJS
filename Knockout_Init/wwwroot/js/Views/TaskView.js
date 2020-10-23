@@ -1,41 +1,39 @@
-var Task = /** @class */ (function () {
-    function Task() {
-        var _this = this;
+class Task {
+    constructor() {
         /*private*/ this.self = this;
-        this.Init = function () { _this.LoadData(); };
-        this.Add = function () {
+        this.Init = () => { this.LoadData(); };
+        this.Add = () => {
             $.post({
                 url: site.Url("Create", "TaskList"),
                 data: { DesTask: $("#taskName").val() }
-            }).done(function (data) {
+            }).done(data => {
                 //@ts-ignore
-                _this.Data.push({ desTask: $("#taskName").val() });
+                this.Data.push({ desTask: $("#taskName").val() });
                 $("#taskName").val(" ");
             });
         };
-        this.LoadData = function () {
+        this.LoadData = () => {
             $.post({
                 url: site.Url("Read", "TaskList"),
                 data: {}
-            }).done(function (data) {
+            }).done(data => {
                 //@ts-ignore
-                _this.Data = ko.observableArray(data);
+                this.Data = ko.observableArray(data);
             });
         };
-        this.Delete = function (ATask) {
+        this.Delete = (ATask) => {
             $.post({
                 url: site.Url("Delete", "TaskList"),
                 data: { DesTask: ATask.desTask }
-            }).done(function (data) {
+            }).done(data => {
                 //@ts-ignore
-                _this.Data.remove(ATask);
+                this.Data.remove(ATask);
             });
         };
     }
-    return Task;
-}());
+}
 //@ts-ignore
-var LTask = new Task();
+const LTask = new Task();
 LTask.Init();
 //ko.applyBindings(LTask);
 //# sourceMappingURL=TaskView.js.map

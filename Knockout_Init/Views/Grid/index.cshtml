@@ -8,25 +8,40 @@
 <div id="filters" class="row m-0 mt-5">
     <div class="col-md-2">
         <label for="" class="text-muted" style="font-weight: bold;">Marca</label>
-        <select id="filter-marca" class="form-control" data-bind="options: LGrid.Marcas"></select>
+        <select id="filter-marca" class="form-control" data-bind="options: ['Marca','Modelo','Ano']"></select>
     </div>
 
     <div class="col-md-2">
         <label for="" class="text-muted" style="font-weight: bold;">Modelo</label>
-        <select id="filter-marca" class="form-control" data-bind="options: LGrid.Modelos"></select>
-    </div>
-
-    <div class="col-md-2">
-        <label for="" class="text-muted" style="font-weight: bold;">Ano</label>
-        <select id="filter-marca" class="form-control" data-bind="options: LGrid.Anos"></select>
-    </div>
-
-    <div class="col-md-2" style="padding-top: 30px;">
-        <button class="btn btn-primary px-4" onclick="LGrid.Filter()">Filtrar</button>
+        <input id="search-input" type="text" class="form-control">
     </div>
 </div>
 
-<div id="grid" data-bind="simpleGrid: LGrid.DataGrid"></div>
+<div id="grid">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Ano</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: LGrid.DataGrid">
+            <tr>
+                <td data-bind="text: tidMarca"></td>
+                <td data-bind="text: tidCarro"></td>
+                <td data-bind="text: valAno"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row m-0 pt-1">
+            <button class="btn btn-primary mr-1"> Inicio</button>
+            <button class="btn btn-primary mr-1">  < </button>
+            <div id="number-pagination"></div>
+            <button class="btn btn-primary mr-1"> > </button>
+            <button class="btn btn-primary">Ultimo</button>
+    </div>
+</div>
 
 <script>
     $(document).ready(function () {

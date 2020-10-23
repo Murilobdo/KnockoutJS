@@ -2,92 +2,68 @@ class Grid{
     
     DataGrid: any;
     items: any;
-    Marcas: any;
-    Modelos: any;
-    Anos: any;
-    
-    Init = (data) => {
-        if(data == undefined){
-            $.post({
-                url: site.Url('GetJSON','Grid'),
-            }).done(data => {
-                this.setDropDowns(data);
-                //@ts-ignore
-                this.items = ko.observableArray(data);
-                //@ts-ignore
-                this.DataGrid = new ko.simpleGrid.viewModel({
-                    data: data,
-                    columnTemplate: "templateColumn",
-                    columns: [
-                        { headerText: "Marca", rowText: "tidMarca" },
-                        { headerText: "Modelo", rowText: "tidCarro" },
-                        { headerText: "Ano", rowText: "valAno" },
-                        //{ headerText: "Price", rowText: function (item) { return "$" + item.price.toFixed(2) } }
-                    ],
-                    pageSize: 4
-                });
-            }).fail(error => {
-                console.log(error)
-            });
-        }else{
-            //@ts-ignore
-            this.DataGrid = new ko.simpleGrid.viewModel({
-                data: data,
-                columnTemplate: "templateColumn",
-                columns: [
-                    { headerText: "Marca", rowText: "tidMarca" },
-                    { headerText: "Modelo", rowText: "tidCarro" },
-                    { headerText: "Ano", rowText: "valAno" },
-                    //{ headerText: "Price", rowText: function (item) { return "$" + item.price.toFixed(2) } }
-                ],
-                pageSize: 4
-            });
-        }
-        
+    typeSearch: string;
+    inputSearch: string;
+    pageSize: number;
+    currentPage: number;
+
+    Init = () => {
+        this.setListeners();
+        this.createGrid();
+        this.pageSize = 5;
     }
     
     Filter = () => {
-        console.log("filter");
         var LMarca = $("#filter-marca").val();
-        console.log(this.DataGrid.data)
-        //@ts-ignore
-        this.SetGrid(LGrid.items().filter(p => p.tidMarca == LMarca))
     }
 
-    SetGrid = (data) => {
-        $("#grid").html(" ");
-        LGrid = new Grid();
-        LGrid.Init(data);
-        //@ts-ignore
-        // setTimeout(() => { ko.applyBindings(LGrid) }, 100);
+    setListeners = () => {
+        this.typeSearch;
+    }
 
-        // //Mudar o data da Grid 
-        // this.DataGrid.data = data;
-        
-        //recriar a GRID não funcionou
-        // this.DataGrid = undefined;
-        // //@ts-ignore
-        // this.DataGrid = new ko.simpleGrid.viewModel({
-        //     data: data,
-        //     columnTemplate: "templateColumn",
-        //     columns: [
-        //         { headerText: "Marca", rowText: "tidMarca" },
-        //         { headerText: "Modelo", rowText: "tidCarro" },
-        //         { headerText: "Ano", rowText: "valAno" },
-        //         // { headerText: "Price", rowText: function (item) { return "$" + item.price.toFixed(2) } }
-        //     ],
-        //     pageSize: 4
-        // });
+    createGrid = () => {
+        $.post({
+            url: site.Url('GetJSON', 'Grid'),
+        }).done(data => {
+            //@ts-ignore
+            this.items = ko.observableArray(data);
+            //@ts-ignore
+            this.DataGrid = ko.observableArray(this.items().slice(0, this.pageSize));
+            this.currentPage = 1;
+            this.createPagination();
+        }).fail(error => {
+            console.log(error)
+        });
     }
-    setDropDowns = (data: any) => {
-        this.Marcas = data.map(item => item.tidMarca)
-                .filter((value, index, self) => self.indexOf(value) === index);
-        
-        this.Modelos = data.map(item => item.tidCarro)
-            .filter((value, index, self) => self.indexOf(value) === index);
-    
-        this.Anos = data.map(item => item.valAno)
-            .filter((value, index, self) => self.indexOf(value) === index);
+
+    createPagination = () => {
+        var TotalButtons = (this.items().length / this.pageSize) + 1;
+
+        if(this.currentPage == 1){
+            $("#number-pagination").append(`<button class="btn btn-primary mr-1" onclick="LGrid.changePagination(1)">1</button>`);
+            $("#number-pagination").append(`<button class="btn btn-primary mr-1" onclick="LGrid.changePagination(2)">2</button>`);
+            $("#number-pagination").append(`<button class="btn btn-primary mr-1" onclick="LGrid.changePagination(3)">3</button>`);
+        }else if(this.currentPage > 1){
+            $("#number-pagination").append(`<button class="btn btn-primary mr-1" onclick="LGrid.changePagination(1)">1</button>`);
+            $("#number-pagination").append(`<button class="btn btn-primary mr-1" onclick="LGrid.changePagination(1)">1</button>`);
+            $("#number-pagination").append(`<button class="btn btn-primary mr-1" onclick="LGrid.changePagination(1)">1</button>`);
+        }
+
+
+        for (let i = 1; i <= TotalButtons; i++) {
+            if(this.currentPage == i)
+                $("#number-pagination").append(`<button class="btn btn-primary mr-1" onclick="LGrid.changePagination(${i})">${i}</button>`)
+            else
+                $("#number-pagination").append(`<button class="btn mr-1" onclick="LGrid.changePagination(${i})">${i}</button>`)
+        }
     }
+
+    changePagination = (NextPage: number) => {
+        //@ts-ignore
+        this.currentPage(NextPage);
+        this.createPagination();
+    }
+
 }
+
 var LGrid = new Grid();
