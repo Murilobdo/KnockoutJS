@@ -1,5 +1,6 @@
-class Converter {
-    constructor() {
+var Converter = /** @class */ (function () {
+    function Converter() {
+        var _this = this;
         //@ts-ignore
         this.rangeInputRed = ko.observable(255);
         //@ts-ignore
@@ -18,20 +19,21 @@ class Converter {
         this.hexaGreen = ko.observable();
         //@ts-ignore
         this.hexaBlue = ko.observable();
-        this.Init = () => {
+        this.Init = function () {
             //@ts-ignore
-            this.computed = ko.computed(() => {
-                this.colorBox(`rgb(${this.rangeInputRed()},${this.rangeInputGreen()},${this.rangeInputBlue()})`);
-                this.rgbColor(`(${this.rangeInputRed()},${this.rangeInputGreen()},${this.rangeInputBlue()})`);
-                this.hexaRed(parseInt(this.rangeInputRed()).toString(16).toUpperCase());
-                this.hexaGreen(parseInt(this.rangeInputGreen()).toString(16).toUpperCase());
-                this.hexaBlue(parseInt(this.rangeInputBlue()).toString(16).toUpperCase());
-                this.hexaColor(`#${this.hexaRed()}${this.hexaGreen()}${this.hexaBlue()}`.toUpperCase());
+            _this.computed = ko.computed(function () {
+                _this.colorBox("rgb(" + _this.rangeInputRed() + "," + _this.rangeInputGreen() + "," + _this.rangeInputBlue() + ")");
+                _this.rgbColor("(" + _this.rangeInputRed() + "," + _this.rangeInputGreen() + "," + _this.rangeInputBlue() + ")");
+                _this.hexaRed(parseInt(_this.rangeInputRed()).toString(16).toUpperCase());
+                _this.hexaGreen(parseInt(_this.rangeInputGreen()).toString(16).toUpperCase());
+                _this.hexaBlue(parseInt(_this.rangeInputBlue()).toString(16).toUpperCase());
+                _this.hexaColor(("#" + _this.hexaRed() + _this.hexaGreen() + _this.hexaBlue()).toUpperCase());
             });
         };
     }
-}
+    return Converter;
+}());
 //@ts-ignore
-const LConverter = new Converter();
+var LConverter = new Converter();
 LConverter.Init();
 //# sourceMappingURL=Converter.js.map

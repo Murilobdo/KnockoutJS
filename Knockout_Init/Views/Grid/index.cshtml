@@ -3,17 +3,19 @@
     <script src="~/js/Views/Grid.js"></script>
 }
 
-
-
 <div id="filters" class="row m-0 mt-5">
     <div class="col-md-2">
-        <label for="" class="text-muted" style="font-weight: bold;">Marca</label>
-        <select id="filter-marca" class="form-control" data-bind="options: ['Marca','Modelo','Ano']"></select>
+        <label for="" class="text-muted" style="font-weight: bold;">Filtro</label>
+        <select id="filter" class="form-control" data-bind="options: ['Marca','Modelo','Ano']"></select>
     </div>
 
     <div class="col-md-2">
-        <label for="" class="text-muted" style="font-weight: bold;">Modelo</label>
+        <label for="" class="text-muted" style="font-weight: bold;">Busca</label>
         <input id="search-input" type="text" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for=""></label>
+        <button class="btn btn-primary" style="margin-top: 30px;" onclick="LGrid.Filter()">Filtrar</button>
     </div>
 </div>
 
@@ -34,18 +36,18 @@
             </tr>
         </tbody>
     </table>
-    <div class="row m-0 pt-1">
-            <button class="btn btn-primary mr-1"> Inicio</button>
-            <button class="btn btn-primary mr-1">  < </button>
+    <div id="pagination" class="row m-0 pt-1">
+            <button class="btn btn-primary mr-1" onclick="LGrid.changePagination(1)">Inicio</button>
+            <button class="btn btn-primary mr-1" onclick="LGrid.changePagination(LGrid.currentPage - 1)"> < </button>
             <div id="number-pagination"></div>
-            <button class="btn btn-primary mr-1"> > </button>
-            <button class="btn btn-primary">Ultimo</button>
+            <button class="btn btn-primary mr-1"onclick="LGrid.changePagination(LGrid.currentPage + 1)"> > </button>
+            <button class="btn btn-primary" onclick="LGrid.changePagination(LGrid.items().length / LGrid.pageSize)">Ultimo</button>
     </div>
 </div>
 
 <script>
     $(document).ready(function () {
-        LGrid.Init(undefined);
+        LGrid.Init();
         setTimeout(() => { ko.applyBindings(LGrid) }, 100);
     });
 </script>

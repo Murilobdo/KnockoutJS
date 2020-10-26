@@ -1,7 +1,8 @@
-class Site {
-    constructor() {
-        this.Url = (AAction, AController) => `https://${$("#root").val()}/${AController}/${AAction}`;
+var Site = /** @class */ (function () {
+    function Site() {
+        this.Url = function (AAction, AController) { return "https://" + $("#root").val() + "/" + AController + "/" + AAction; };
     }
-}
-const site = new Site();
+    return Site;
+}());
+var site = new Site();
 //# sourceMappingURL=site.js.map
