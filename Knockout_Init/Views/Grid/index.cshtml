@@ -36,12 +36,10 @@
             </tr>
         </tbody>
     </table>
-    <div id="pagination" class="row m-0 pt-1">
-            <button class="btn btn-primary mr-1" onclick="LGrid.changePagination(1)">Inicio</button>
-            <button class="btn btn-primary mr-1" onclick="LGrid.changePagination(LGrid.currentPage - 1)"> < </button>
-            <div id="number-pagination"></div>
-            <button class="btn btn-primary mr-1"onclick="LGrid.changePagination(LGrid.currentPage + 1)"> > </button>
-            <button class="btn btn-primary" onclick="LGrid.changePagination(LGrid.items().length / LGrid.pageSize)">Ultimo</button>
+    <div class="row m-0 pt-1">
+        <div id="pagination" class="col-md-6"></div>    
+        <div id="info-grid" class="col-md-6" style="text-align: right; font-weight: bold;">
+        </div>    
     </div>
 </div>
 
