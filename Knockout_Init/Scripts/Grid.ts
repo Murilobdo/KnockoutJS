@@ -98,7 +98,7 @@ class Grid{
         if(totalPages > this.currentPage) {
             $("#pagination").append(`<button id="last-page" class="btn btn-primary" onclick="LGrid.changePagination(${this.items().length / this.pageSize})">Ultimo</button>`);
         }
-
+        
         $("#info-grid").html("Total de registros " + this.items().length);
     }
     
