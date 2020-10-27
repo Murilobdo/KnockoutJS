@@ -22,7 +22,7 @@ var Grid = /** @class */ (function () {
                             LFilterItems.push(element);
                         break;
                     case "Ano":
-                        if (element.Ano.indexOf(LSearch) != -1)
+                        if (element.ValAno == LSearch)
                             LFilterItems.push(element);
                         break;
                 }
@@ -45,17 +45,17 @@ var Grid = /** @class */ (function () {
         };
         this.createPagination = function () {
             $("#pagination").html();
-            var totalPages = (_this.items().length / _this.pageSize);
+            //@ts-ignore
+            var totalPages = Math.trunc(_this.items().length / _this.pageSize);
             var total = totalPages * _this.pageSize;
             if (_this.items().length >= total) {
                 totalPages = totalPages + 1;
             }
-            var totalDisplay = totalPages > 3 ? (3 + (_this.currentPage - 1)) : totalPages;
             if (_this.currentPage > 1) {
-                $("#pagination").html("<button id=\"first-page\" class=\"btn btn-primary mr-1\" onclick=\"LGrid.changePagination(1)\">Inicio</button>");
+                $("#pagination").append("<button id=\"first-page\" class=\"btn btn-primary mr-1\" onclick=\"LGrid.changePagination(1)\">Inicio</button>");
             }
             if (_this.currentPage > 1) {
-                $("#pagination").html("<button id=\"previous-page\" class=\"btn btn-primary mr-1\" onclick=\"LGrid.changePagination(" + (_this.currentPage - 1) + ")\"> < </button>");
+                $("#pagination").append("<button id=\"previous-page\" class=\"btn btn-primary mr-1\" onclick=\"LGrid.changePagination(" + (_this.currentPage - 1) + ")\"> < </button>");
             }
             if (_this.currentPage <= totalPages && _this.currentPage > 1) {
                 $("#pagination").append("<button class=\"btn mr-1\" onclick=\"LGrid.changePagination(" + (_this.currentPage - 1) + ")\">" + (_this.currentPage - 1) + "</button>");
@@ -68,7 +68,7 @@ var Grid = /** @class */ (function () {
                 $("#pagination").append("<button class=\"btn mr-1\" onclick=\"LGrid.changePagination(" + (_this.currentPage + 2) + ")\">" + (_this.currentPage + 2) + "</button>");
             }
             if (_this.currentPage < totalPages) {
-                $("#pagination").append("<button id=\"next-page\" class=\"btn btn-primary mr-1\"onclick=\"LGrid.changePagination(" + (_this.currentPage - 1) + ")\"> > </button>");
+                $("#pagination").append("<button id=\"next-page\" class=\"btn btn-primary mr-1\"onclick=\"LGrid.changePagination(" + (_this.currentPage + 1) + ")\"> > </button>");
             }
             if (totalPages > _this.currentPage) {
                 $("#pagination").append("<button id=\"last-page\" class=\"btn btn-primary\" onclick=\"LGrid.changePagination(" + _this.items().length / _this.pageSize + ")\">Ultimo</button>");

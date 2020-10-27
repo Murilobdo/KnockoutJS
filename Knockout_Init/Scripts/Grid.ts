@@ -31,7 +31,7 @@ class Grid{
                         LFilterItems.push(element);
                     break;
                 case "Ano":
-                    if(element.Ano.indexOf(LSearch) != -1)
+                    if(element.ValAno == LSearch)
                         LFilterItems.push(element);
                     break;
             }
@@ -59,21 +59,22 @@ class Grid{
         $("#pagination").html();
 
 
-        var totalPages:number = (this.items().length /  this.pageSize);
+        //@ts-ignore
+        var totalPages:number = Math.trunc(this.items().length /  this.pageSize);
         var total:number = totalPages * this.pageSize;
         
         if(this.items().length  >= total){
             totalPages = totalPages + 1;
         }
 
-        var totalDisplay:number = totalPages > 3 ? (3 + (this.currentPage - 1)) : totalPages;
+        if(this.currentPage > 1) {
+            $("#pagination").append(`<button id="first-page" class="btn btn-primary mr-1" onclick="LGrid.changePagination(1)">Inicio</button>`);
+        }
 
         if(this.currentPage > 1) {
-            $("#pagination").html(`<button id="first-page" class="btn btn-primary mr-1" onclick="LGrid.changePagination(1)">Inicio</button>`);
+            $("#pagination").append(`<button id="previous-page" class="btn btn-primary mr-1" onclick="LGrid.changePagination(${this.currentPage - 1})"> < </button>`);
         }
-        if(this.currentPage > 1) {
-            $("#pagination").html(`<button id="previous-page" class="btn btn-primary mr-1" onclick="LGrid.changePagination(${this.currentPage - 1})"> < </button>`);
-        }
+
         if(this.currentPage <= totalPages && this.currentPage > 1) {
             $("#pagination").append(`<button class="btn mr-1" onclick="LGrid.changePagination(${(this.currentPage - 1)})">${(this.currentPage - 1)}</button>`);
         }
@@ -83,12 +84,15 @@ class Grid{
         if(this.currentPage < totalPages) {
             $("#pagination").append(`<button class="btn mr-1" onclick="LGrid.changePagination(${(this.currentPage + 1)})">${this.currentPage + 1}</button>`);
         }
+
         if((this.currentPage + 2) <= totalPages) {
             $("#pagination").append(`<button class="btn mr-1" onclick="LGrid.changePagination(${(this.currentPage + 2)})">${this.currentPage + 2}</button>`);
         }
+
         if(this.currentPage < totalPages) {
-            $("#pagination").append(`<button id="next-page" class="btn btn-primary mr-1"onclick="LGrid.changePagination(${(this.currentPage - 1)})"> > </button>`);
+            $("#pagination").append(`<button id="next-page" class="btn btn-primary mr-1"onclick="LGrid.changePagination(${(this.currentPage + 1)})"> > </button>`);
         }
+
         if(totalPages > this.currentPage) {
             $("#pagination").append(`<button id="last-page" class="btn btn-primary" onclick="LGrid.changePagination(${this.items().length / this.pageSize})">Ultimo</button>`);
         }
