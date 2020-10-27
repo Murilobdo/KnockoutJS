@@ -31,13 +31,15 @@ class Grid{
                         LFilterItems.push(element);
                     break;
                 case "Ano":
-                    if(element.ValAno == LSearch)
+                    //@ts-ignore
+                    if(element.valAno == parseInt(LSearch))
                         LFilterItems.push(element);
                     break;
             }
         });
 
         this.DataGrid(LFilterItems)
+        this.createPagination();
     }
     
     createGrid = () => {
