@@ -13,6 +13,8 @@ var Curriculum = /** @class */ (function () {
         this.celular = ko.observable();
         //@ts-ignore
         this.telefone = ko.observable();
+        //@ts-ignore
+        this.cursos = ko.observable();
         this.Init = function () { };
         this.maskRG = function () {
             if (_this.RG().length == 2 || _this.RG().length == 6)

@@ -12,6 +12,8 @@ class Curriculum {
     celular: any = ko.observable();
     //@ts-ignore
     telefone: any = ko.observable();
+    //@ts-ignore
+    cursos: any = ko.observable();
     
     Init = () => { }
 
@@ -28,13 +30,13 @@ class Curriculum {
         if(this.CPF().length == 11)
             this.CPF(this.CPF() + "-")
     }
-
+    
     maskCelular = () => {
         if(this.celular().length == 1)
             this.celular("("+this.celular())
         else if(this.celular().length == 3)
             this.celular(this.celular() + ") ")
-            else if(this.celular().length == 10)
+        else if(this.celular().length == 10)
             this.celular(this.celular() + "-")
     }
 
@@ -43,7 +45,7 @@ class Curriculum {
             this.telefone("("+this.telefone())
         else if(this.telefone().length == 3)
             this.telefone(this.telefone() + ") ")
-            else if(this.telefone().length == 9)
+        else if(this.telefone().length == 9)
             this.telefone(this.telefone() + "-")
     }
 }
