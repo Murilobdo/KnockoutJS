@@ -14,8 +14,24 @@ class Curriculum {
     telefone: any = ko.observable();
     //@ts-ignore
     cursos: any = ko.observable();
+    cvCursos: any;
     
-    Init = () => { }
+    Init = () => { 
+        
+        //@ts-ignore
+        ko.computed(() => {
+            debugger;
+            if(this.cursos() != undefined){
+                
+                var listCursos = this.cursos().split(";")
+
+                listCursos.forEach(element => {
+                    
+                });
+
+            }
+        });
+    }
 
     maskRG = () => {
         if(this.RG().length == 2 || this.RG().length == 6 )
@@ -30,7 +46,7 @@ class Curriculum {
         if(this.CPF().length == 11)
             this.CPF(this.CPF() + "-")
     }
-    
+
     maskCelular = () => {
         if(this.celular().length == 1)
             this.celular("("+this.celular())
@@ -49,6 +65,5 @@ class Curriculum {
             this.telefone(this.telefone() + "-")
     }
 }
-
 
 const LCv = new Curriculum();

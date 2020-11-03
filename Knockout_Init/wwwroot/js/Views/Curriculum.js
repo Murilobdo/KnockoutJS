@@ -15,7 +15,16 @@ var Curriculum = /** @class */ (function () {
         this.telefone = ko.observable();
         //@ts-ignore
         this.cursos = ko.observable();
-        this.Init = function () { };
+        this.Init = function () {
+            //@ts-ignore
+            ko.computed(function () {
+                debugger;
+                if (_this.cursos() != undefined) {
+                    var listCursos = _this.cursos().split(";");
+                    console.log(listCursos);
+                }
+            });
+        };
         this.maskRG = function () {
             if (_this.RG().length == 2 || _this.RG().length == 6)
                 _this.RG(_this.RG() + ".");
