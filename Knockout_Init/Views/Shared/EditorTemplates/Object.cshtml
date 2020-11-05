@@ -1,0 +1,33 @@
+@using System.Reflection
+@model object;
+
+
+@{
+    Dictionary<string, string> ListProperties = new Dictionary<string, string>();
+
+    <!--PEGANDO O NOME DO ATRIBUTO E SEU RESPECTIVO DISPLAY -->
+
+    foreach (PropertyInfo LProperty in Model.GetType().GetProperties())
+    {
+        <!-- Se o atributo estiver marcado como "IgnoreOnView" não sera mapeado o HTML -->
+        if(LProperty.CustomAttributes.FirstOrDefault().AttributeType.Name != "IgnoreOnView") {
+            string PropertyName = LProperty.Name;
+            string PropertyDisplayName = LProperty.CustomAttributes.Select(p => p.NamedArguments).FirstOrDefault()
+                .Select(p => p.TypedValue.Value).FirstOrDefault().ToString();
+
+            ListProperties.Add(LProperty.Name,PropertyDisplayName);
+        }
+    }
+
+}
+
+<div class="row">
+    @{
+        foreach (var LProperty in ListProperties)
+        {
+            <div class="col-5 mx-4 p-2" id="div-@LProperty.Key">
+                <div>@Html.Editor(LProperty.Key)</div>
+            </div>
+        }
+    }
+</div>
