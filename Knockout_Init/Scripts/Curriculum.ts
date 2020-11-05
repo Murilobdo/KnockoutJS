@@ -14,21 +14,34 @@ class Curriculum {
     telefone: any = ko.observable();
     //@ts-ignore
     cursos: any = ko.observable();
-    cvCursos: any;
-    
+    //@ts-ignore
+    listCursos:any = ko.observableArray();
+    //@ts-ignore
+    cursos: any = ko.observable();
+    //@ts-ignore
+    listCursos:any = ko.observableArray();
+    //@ts-ignore
+    empresas: any = ko.observable();
+    //@ts-ignore
+    listEmpresas: any = ko.observableArray();
+
     Init = () => { 
-        
+
+        this.cursos("Web; Programação");
+        this.empresas("Fazsoft; Capgemini");
+
         //@ts-ignore
         ko.computed(() => {
-            debugger;
-            if(this.cursos() != undefined){
+            if(this.cursos() != undefined) {
                 
-                var listCursos = this.cursos().split(";")
-
-                listCursos.forEach(element => {
-                    
-                });
-
+                var cursos = this.cursos().split(";")
+                this.listCursos(cursos);
+            }
+            debugger;
+            if(this.empresas() != undefined) {
+                
+                var empresa = this.empresas().split(";")
+                this.listEmpresas(empresa);
             }
         });
     }

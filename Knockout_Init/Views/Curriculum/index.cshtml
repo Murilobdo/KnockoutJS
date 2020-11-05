@@ -1,7 +1,11 @@
 
 
 <script src="~/js/Views/Curriculum.js"></script>
-
+<style>
+    ul {
+        list-style: decimal;
+    }
+</style>
 <div class="row m-0">
     <div class="col-md-6">
         <h3 class="text-muted font-weight-bold">Dados Cadastrais</h3>
@@ -28,7 +32,7 @@
                 <textarea class="form-control" rows="5" placeholder="Digite suas espcializações todas separadas por ; (ponto e virgula)" data-bind="value: LCv.cursos"></textarea>
             </div>
             <div class="form-group mt-3">
-                <textarea class="form-control" rows="5" placeholder="Digite as empresas que ja trabalhou todas separadas por ; (ponto e virgula)"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Digite as empresas que ja trabalhou todas separadas por ; (ponto e virgula)" data-bind="value: LCv.empresas"></textarea>
             </div>
         </form>
     </div>
@@ -49,6 +53,21 @@
                 <div class="row m-0">
                     <p>RG: <span id="rg" data-bind="text: LCv.RG"></span></p>
                     <p>CPF: <span id="cpf" data-bind="text: LCv.CPF"></span></p>
+                </div>
+
+                <div class="row m-0 pt-3" >
+                    <h5>Competências</h5>
+                    <br>  
+                    <ul class="col-md-10 ml-3" data-bind="foreach: LCv.listCursos" style="max-height: 150px; overflow-y: auto;">
+                        <li data-bind="text: $data"></li>
+                    </ul>
+                </div>
+                <div class="row m-0 pt-3" >
+                    <h5>Empresas</h5>
+                    <br>  
+                    <ul class="col-md-10 ml-3" data-bind="foreach: LCv.listEmpresas" style="max-height: 150px; overflow-y: auto;">
+                        <li data-bind="text: $data"></li>
+                    </ul>
                 </div>
             </div>
         </div>

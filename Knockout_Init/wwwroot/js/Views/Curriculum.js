@@ -15,13 +15,29 @@ var Curriculum = /** @class */ (function () {
         this.telefone = ko.observable();
         //@ts-ignore
         this.cursos = ko.observable();
+        //@ts-ignore
+        this.listCursos = ko.observableArray();
+        //@ts-ignore
+        this.cursos = ko.observable();
+        //@ts-ignore
+        this.listCursos = ko.observableArray();
+        //@ts-ignore
+        this.empresas = ko.observable();
+        //@ts-ignore
+        this.listEmpresas = ko.observableArray();
         this.Init = function () {
+            _this.cursos("Web; Programação");
+            _this.empresas("Fazsoft; Capgemini");
             //@ts-ignore
             ko.computed(function () {
-                debugger;
                 if (_this.cursos() != undefined) {
-                    var listCursos = _this.cursos().split(";");
-                    console.log(listCursos);
+                    var cursos = _this.cursos().split(";");
+                    _this.listCursos(cursos);
+                }
+                debugger;
+                if (_this.empresas() != undefined) {
+                    var empresa = _this.empresas().split(";");
+                    _this.listEmpresas(empresa);
                 }
             });
         };
