@@ -39,7 +39,6 @@ class Curriculum {
                 
                 this.listCursos(cursos);
             }
-            debugger;
             if(this.empresas() != undefined) {
                 
                 var empresa = this.empresas().split(";")
