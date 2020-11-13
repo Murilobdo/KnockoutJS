@@ -12,8 +12,9 @@
         <!-- Se o atributo estiver marcado como "IgnoreOnView" não sera mapeado o HTML -->
         if(LProperty.CustomAttributes.FirstOrDefault().AttributeType.Name != "IgnoreOnView") {
             string PropertyName = LProperty.Name;
-            string PropertyDisplayName = LProperty.CustomAttributes.Select(p => p.NamedArguments).FirstOrDefault()
-                .Select(p => p.TypedValue.Value).FirstOrDefault().ToString();
+
+            string PropertyDisplayName = LProperty.CustomAttributes.Where(p => p.AttributeType.Name == "DisplayAttribute")
+                .SelectMany(p => p.NamedArguments).First().TypedValue.Value.ToString();
 
             ListProperties.Add(LProperty.Name,PropertyDisplayName);
         }

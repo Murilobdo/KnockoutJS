@@ -1,0 +1,5 @@
+﻿@{
+    var Name = ViewData.ModelMetadata.DisplayName;
+}
+
+<ko-number params="{label: '@Name.ToString()'}"></ko-number>

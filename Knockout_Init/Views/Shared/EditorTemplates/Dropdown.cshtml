@@ -1,0 +1,6 @@
+
+@{
+    var Name = ViewData.ModelMetadata.DisplayName;
+}
+
+<ko-dropdown params="{label: '@Name.ToString()'}"></ko-dropdown>

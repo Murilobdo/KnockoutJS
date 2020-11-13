@@ -11,7 +11,12 @@ namespace Knockout_Init.Models
         public string DesSobrenome { get; set; }
 
         [UIHint(UHInts.Dropdown)]
-        public int MyProperty { get; set; }
+        [Display(Name = "Estado")]
+        public int DesEstado { get; set; }
+
+        [UIHint(UHInts.Number)]
+        [Display(Name = "Idade")]
+        public int ValIdade { get; set; }
 
         public PersonViewModel()
         {

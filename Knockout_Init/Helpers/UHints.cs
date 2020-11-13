@@ -4,5 +4,6 @@ namespace Knockout_Init.Helpers
     {
         public const string Dropdown = "Dropdown";
         public const string Autocomplete = "Autocomplete";
+        public const string Number = "Number";
     }
 }
