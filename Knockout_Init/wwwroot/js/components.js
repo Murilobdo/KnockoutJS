@@ -38,14 +38,18 @@ ko.components.register('ko-number', {
     viewModel: function (params) {
         // Data: value is either null, 'like', or 'dislike'
         this.label = ko.observable(params.label);
-        this.data = ko.observable();
+        this.data = ko.observable(0);
 
         this.add = () => {
-
+            console.log("ADD");
+            var previousCount = this.data();
+            this.data(previousCount + 1);
         };
 
         this.sub = () => {
-
+            console.log("SUB");
+            var previousCount = this.data();
+            this.data(previousCount - 1);
         };
 
     },
@@ -53,9 +57,9 @@ ko.components.register('ko-number', {
         `
             <label data-bind='text: label' style='font-size: 25px; font-weight: 500;'></label>
             <div>
-                <input type='number' class='form-control'/>
-                <button type="button" class="btn btn-primary" style="position: relative;left: 85%;top: -41px;">+</button>
-                <button type="button" class="btn btn-danger" style="position: relative;left: 85%;top: -41px;">-</button>
+                <input type='number' class='form-control' data-bind="value: data"/>
+                <button type="button" class="btn btn-primary" data-bind="click: add" style="position: relative;left: 85%;top: -41px;">+</button>
+                <button type="button" class="btn btn-danger" data-bind="click: sub" style="position: relative;left: 85%;top: -41px;">-</button>
             </div>
         `
 });

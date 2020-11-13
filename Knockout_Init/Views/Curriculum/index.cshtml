@@ -3,7 +3,7 @@
 <script src="~/js/Views/Curriculum.js"></script>
 <style>
     ul {
-        list-style: decimal;
+        list-style: inside;
     }
 </style>
 <div class="row m-0">
@@ -16,16 +16,16 @@
             <div class="form-row d-flex justify-content-between m-0">
                 <input type="text" class="form-control" maxlength="12" placeholder="Seu RG" style="width: 45%;" data-bind="value: LCv.RG, 
                                                                                             valueUpdate:['afterkeydown']" onkeypress="LCv.maskRG()">
-                <input type="text" class="form-control" placeholder="Seu CPF" style="width: 45%;" data-bind="value: LCv.CPF,
+                <input type="text" class="form-control" maxlength="14" placeholder="Seu CPF" style="width: 45%;" data-bind="value: LCv.CPF,
                                                                                             valueUpdate:['afterkeydown']" onkeypress="LCv.maskCPF()">
             </div>
             <div class="form-group mt-3">
                 <input type="email" class="form-control" placeholder="Digite seu melhor e-mail" data-bind="value: LCv.email">
             </div>
             <div class="form-row d-flex justify-content-between m-0">
-                <input type="text" class="form-control" max="15" placeholder="Seu celular " style="width: 45%;" data-bind="value: LCv.celular,
+                <input type="text" class="form-control" maxlength="15" placeholder="Seu celular" style="width: 45%;" data-bind="value: LCv.celular,
                                                                                         valueUpdate:['afterkeydown']" onkeypress="LCv.maskCelular()">
-                <input type="text" class="form-control" max="14" placeholder="Seu telefone " style="width: 45%;" data-bind="value: LCv.telefone,
+                <input type="text" class="form-control" maxlength="14" placeholder="Seu telefone" style="width: 45%;" data-bind="value: LCv.telefone,
                                                                                         valueUpdate:['afterkeydown']" onkeypress="LCv.maskTelefone()">
             </div>
             <div class="form-group mt-3">
@@ -55,18 +55,17 @@
                     <p>CPF: <span id="cpf" data-bind="text: LCv.CPF"></span></p>
                 </div>
 
-                <div class="row m-0 pt-3" >
-                    <h5>Competências</h5>
-                    <br>  
-                    <ul class="col-md-10 ml-3" data-bind="foreach: LCv.listCursos" style="max-height: 150px; overflow-y: auto;">
-                        <li data-bind="text: $data"></li>
+                <div class="row m-0 pt-3">
+                    <h5 class="col-12" style="font-size:35px;">Competências</h5>
+                    <br>
+                    <ul class="col-md-10 ml-4" data-bind="foreach: LCv.listCursos" style="max-height: 150px; overflow-y: auto;">
+                        <li style="font-size:25px;" data-bind="text: $data"></li>
                     </ul>
                 </div>
-                <div class="row m-0 pt-3" >
-                    <h5>Empresas</h5>
-                    <br>  
-                    <ul class="col-md-10 ml-3" data-bind="foreach: LCv.listEmpresas" style="max-height: 150px; overflow-y: auto;">
-                        <li data-bind="text: $data"></li>
+                <div class="row m-0 pt-3">
+                    <h5 class="col-12" style="font-size:35px;">Empresas</h5>
+                    <ul class="col-md-10 ml-4" data-bind="foreach: LCv.listEmpresas" style="max-height: 150px; overflow-y: auto;">
+                        <li style="font-size:25px;" data-bind="text: $data"></li>
                     </ul>
                 </div>
             </div>

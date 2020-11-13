@@ -16,18 +16,18 @@ class Grid{
     
     Filter = () => {
         var LFilter = $("#filter").val();
-        var LSearch = $("#search-input").val();
+        var LSearch = <string>$("#search-input").val();
         var LFilterItems = [];
 
         this.items().forEach(element => {
             debugger;
             switch (LFilter) {
                 case "Marca":
-                    if(element.tidMarca.indexOf(LSearch) != -1)
+                    if (element.tidMarca.toLowerCase().indexOf(LSearch.toLowerCase()) != -1)
                         LFilterItems.push(element);
                     break;
                 case "Modelo":
-                    if(element.tidCarro.indexOf(LSearch) != -1)
+                    if (element.tidCarro.toLowerCase().indexOf(LSearch.toLowerCase()) != -1)
                         LFilterItems.push(element);
                     break;
                 case "Ano":
@@ -39,7 +39,6 @@ class Grid{
         });
 
         this.DataGrid(LFilterItems)
-        this.createPagination();
     }
     
     createGrid = () => {
@@ -58,14 +57,14 @@ class Grid{
     }
     
     createPagination = () => {
-        $("#pagination").html();
+        this.cleanGrid();
 
 
         //@ts-ignore
-        var totalPages:number = Math.trunc(this.items().length /  this.pageSize);
+        var totalPages: number = Math.trunc(this.items().length /  this.pageSize);
         var total:number = totalPages * this.pageSize;
-        
-        if(this.items().length  >= total){
+
+        if (this.items().length >= total) {
             totalPages = totalPages + 1;
         }
 
@@ -98,13 +97,17 @@ class Grid{
         if(totalPages > this.currentPage) {
             $("#pagination").append(`<button id="last-page" class="btn btn-primary" onclick="LGrid.changePagination(${this.items().length / this.pageSize})">Ultimo</button>`);
         }
-        
+
         $("#info-grid").html("Total de registros " + this.items().length);
     }
     
     changePagination = (NextPage: number) => {
         this.currentPage = NextPage;
-        this.DataGrid(this.items().slice((this.currentPage - 1) * this.pageSize, this.pageSize * this.currentPage))
+        if (this.DataGrid().length != this.items().length) {
+            this.DataGrid(this.DataGrid().slice((this.currentPage - 1) * this.pageSize, this.pageSize * this.currentPage))
+        } else {
+            this.DataGrid(this.items().slice((this.currentPage - 1) * this.pageSize, this.pageSize * this.currentPage))
+        }
         this.cleanGrid()
         this.createPagination();
     }

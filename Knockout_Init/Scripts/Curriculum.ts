@@ -27,20 +27,23 @@ class Curriculum {
 
     Init = () => { 
 
-        this.cursos("Web; Programação");
-        this.empresas("Fazsoft; Capgemini");
+        this.cursos();
+        this.empresas();
 
         //@ts-ignore
         ko.computed(() => {
             if(this.cursos() != undefined) {
                 
                 var cursos = this.cursos().split(";")
+                cursos = cursos.slice(0, cursos.length - 1)
+                
                 this.listCursos(cursos);
             }
             debugger;
             if(this.empresas() != undefined) {
                 
                 var empresa = this.empresas().split(";")
+                empresa = empresa.slice(0, empresa.length - 1)
                 this.listEmpresas(empresa);
             }
         });

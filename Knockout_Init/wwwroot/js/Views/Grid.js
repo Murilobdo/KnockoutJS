@@ -14,11 +14,11 @@ var Grid = /** @class */ (function () {
                 debugger;
                 switch (LFilter) {
                     case "Marca":
-                        if (element.tidMarca.indexOf(LSearch) != -1)
+                        if (element.tidMarca.toLowerCase().indexOf(LSearch.toLowerCase()) != -1)
                             LFilterItems.push(element);
                         break;
                     case "Modelo":
-                        if (element.tidCarro.indexOf(LSearch) != -1)
+                        if (element.tidCarro.toLowerCase().indexOf(LSearch.toLowerCase()) != -1)
                             LFilterItems.push(element);
                         break;
                     case "Ano":
@@ -29,7 +29,6 @@ var Grid = /** @class */ (function () {
                 }
             });
             _this.DataGrid(LFilterItems);
-            _this.createPagination();
         };
         this.createGrid = function () {
             $.post({
@@ -46,7 +45,7 @@ var Grid = /** @class */ (function () {
             });
         };
         this.createPagination = function () {
-            $("#pagination").html();
+            _this.cleanGrid();
             //@ts-ignore
             var totalPages = Math.trunc(_this.items().length / _this.pageSize);
             var total = totalPages * _this.pageSize;
@@ -79,7 +78,12 @@ var Grid = /** @class */ (function () {
         };
         this.changePagination = function (NextPage) {
             _this.currentPage = NextPage;
-            _this.DataGrid(_this.items().slice((_this.currentPage - 1) * _this.pageSize, _this.pageSize * _this.currentPage));
+            if (_this.DataGrid().length != _this.items().length) {
+                _this.DataGrid(_this.DataGrid().slice((_this.currentPage - 1) * _this.pageSize, _this.pageSize * _this.currentPage));
+            }
+            else {
+                _this.DataGrid(_this.items().slice((_this.currentPage - 1) * _this.pageSize, _this.pageSize * _this.currentPage));
+            }
             _this.cleanGrid();
             _this.createPagination();
         };
